@@ -121,3 +121,5 @@ C:\Users\uelisson\Desktop\C#\MinhaPrimeiraAPIDotNet\MinhaPrimeiraAPIDotNet\obj\D
 C:\Users\uelisson\Desktop\C#\MinhaPrimeiraAPIDotNet\MinhaPrimeiraAPIDotNet\obj\Debug\net10.0\MinhaPrimeiraAPIDotNet.genruntimeconfig.cache
 C:\Users\uelisson\Desktop\C#\MinhaPrimeiraAPIDotNet\MinhaPrimeiraAPIDotNet\obj\Debug\net10.0\ref\MinhaPrimeiraAPIDotNet.dll
 C:\Users\uelisson\Desktop\C#\MinhaPrimeiraAPIDotNet\MinhaPrimeiraAPIDotNet\bin\Debug\net10.0\ConfigurationSubstitution.dll
+C:\Users\uelisson\Desktop\C#\MinhaPrimeiraAPIDotNet\MinhaPrimeiraAPIDotNet\obj\Debug\net10.0\MinhaPrimeiraAPIDotNet.sourcelink.json
+C:\Users\uelisson\Desktop\C#\MinhaPrimeiraAPIDotNet\MinhaPrimeiraAPIDotNet\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
