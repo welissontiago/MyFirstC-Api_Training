@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MinhaPrimeiraAPIDotNet.Context;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                     .AddEnvironmentVariables(); // Lê as variáveis do Windows
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(opitons => 
+opitons.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 

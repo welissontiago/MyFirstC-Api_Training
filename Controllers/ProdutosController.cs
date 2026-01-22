@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MinhaPrimeiraAPIDotNet.Context;
 using MinhaPrimeiraAPIDotNet.Models;
 
@@ -17,9 +18,9 @@ namespace MinhaPrimeiraAPIDotNet.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Produto>> Get()
+        public async Task<ActionResult<IEnumerable<Produto>>> Get()
         {
-            var produtos = _context.Produtos.ToList();
+            var produtos = await _context.Produtos.AsNoTracking().ToListAsync();
             if(produtos is null)
             {
                 return NotFound("Produtos não encontrados");
@@ -27,10 +28,10 @@ namespace MinhaPrimeiraAPIDotNet.Controllers
             return produtos;
         }
 
-        [HttpGet("{id:int}", Name="ObterProduto")]
-        public ActionResult <Produto> Get(int id)
+        [HttpGet("{id:int:min(1)}", Name="ObterProduto")]
+        public async Task<ActionResult <Produto>> Get(int id)
         {
-            var produto = _context.Produtos.FirstOrDefault(p => p.ProdutoId == id);
+            var produto = await _context.Produtos.FirstOrDefaultAsync(p => p.ProdutoId == id);
             if(produto is null)
             {
                 return NotFound("Produto não foi encontrado, insira um id valido!");
@@ -52,19 +53,19 @@ namespace MinhaPrimeiraAPIDotNet.Controllers
                 new { id = produto.ProdutoId }, produto);
         }
 
-        [HttpPut("{id:int}")]
+        [HttpPut("{id:int:min(1)}")]
         public ActionResult Put(int id, Produto produto)
         {
             if(id != produto.ProdutoId)
             {
                 return BadRequest();
             }
-            _context.Entry(produto).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.Entry(produto).State = EntityState.Modified;
             _context.SaveChanges();
             return Ok(produto);
         }
 
-        [HttpDelete("{id:int}")]
+        [HttpDelete("{id:int:min(1)}")]
         public ActionResult Delete(int id)
         {
             var produto = _context.Produtos.FirstOrDefault(p => p.ProdutoId == id);
